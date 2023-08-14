@@ -38,7 +38,7 @@ export default function Home() {
 
   return (
     <div>
-      {fetchedData ? (
+      {fetchedData ? 
         fetchedData.map((audit: any) => (
           <div key={audit.id}>
              <h1> Audit {audit.id} </h1>
@@ -53,7 +53,7 @@ export default function Home() {
       <p> Telephone : 0{ audit.attributes.id_client.data.attributes.Telephone } </p>
           </div>
         ))
-      ) : (
+       : (
         <p>Chargement en cours...</p>
       )}
     </div>
