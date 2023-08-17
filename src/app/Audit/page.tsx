@@ -3,9 +3,10 @@ import { useEffect, useState } from 'react';
 import { parseCookies } from 'nookies';
 import fetcher from '../Components/Audits';
 import { useRouter } from 'next/navigation';
-
+import { destroyCookie } from 'nookies';
+import Link from "next/link";
 export default function Home() {
-  const [fetchedData, setFetchedData] = useState(null);
+  const [fetchedData, setFetchedData] = useState([]);
   const router = useRouter();
   useEffect(() => {
     async function fetchData() {
@@ -16,6 +17,7 @@ export default function Home() {
         router.push('/');
       } else {
         try {
+          
           const options = {
             method: 'GET',
             headers: {
@@ -31,11 +33,16 @@ export default function Home() {
           console.error("Une erreur s'est produite :", error);
         }
       }
+      
     }
 
     fetchData();
   }, []); // Le tableau vide signifie que cela s'exécutera une fois après le montage initial
-
+const logout =()=> {
+  
+  destroyCookie(null, 'jwt');
+  router.push('/');
+}
   return (
     <div>
       {fetchedData ? 
@@ -56,6 +63,12 @@ export default function Home() {
        : (
         <p>Chargement en cours...</p>
       )}
+
+      <div>
+        <button onClick={()=>logout()}>Logout</button>
+       <p> <Link href={'/'}> Home Page </Link> </p>
+       <p> <Link href={'/Profile'}> Profile Page </Link> </p>
+      </div>
     </div>
   );
 }
