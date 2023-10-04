@@ -1,7 +1,6 @@
 'use client'
 import { Grid, Box } from '@mui/material';
 import PageContainer from 'src/app/(DashboardLayout)/components/container/PageContainer';
-import Typography from '@mui/material/Typography'
 
 // components
 

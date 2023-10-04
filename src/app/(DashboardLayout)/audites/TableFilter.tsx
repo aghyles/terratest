@@ -20,8 +20,8 @@ import { DataGridRowType } from 'src/@fake-db/types'
 // ** Utils Import
 import { getInitials } from 'src/@core/utils/get-initials'
 
-// ** Data Import
-import { setData } from './dataUtils';
+
+
 
 interface StatusObj {
   [key: number]: {
@@ -146,7 +146,7 @@ const columns: GridColDef[] = [
 
 const TableColumns = () => {
   const [fetchedData, setFetchedData] = useState<DataGridRowType[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [setLoading] = useState(true);
   const [searchText, setSearchText] = useState<string>('');
   const [filteredData, setFilteredData] = useState<DataGridRowType[]>([]);
   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
