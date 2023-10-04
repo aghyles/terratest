@@ -394,16 +394,11 @@ const ComposePopup = (props: MailComposeType) => {
         }}
       >
         <ReactDraftWysiwyg
-          editorState={messageValue}
-          onEditorStateChange={editorState => setMessageValue(editorState)}
-          placeholder='Message'
-          toolbar={{
-            options: ['inline', 'textAlign'],
-            inline: {
-              inDropdown: false,
-              options: ['bold', 'italic', 'underline', 'strikethrough']
-            }
-          }}
+
+
+
+
+
         />
       </EditorWrapper>
       <Box
