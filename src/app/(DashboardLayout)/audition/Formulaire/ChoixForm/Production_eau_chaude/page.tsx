@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useState } from "react";
 import Select , {  MultiValue } from 'react-select';
-import "@/app/globals.css"
+import "src/app/globals.css"
 
 export default function Home () {
- 
-   
+
+
   const [mode, setMode] = useState<undefined | string >('');
   const [type, setType] = useState<string | undefined >("");
   const [option, setOption] = useState<string | undefined >("");
@@ -38,11 +38,11 @@ export default function Home () {
                     Description_SL:descriptionSl,
                     Remarque:remarque,
                     audit:id
-                                        
-                };
-                 
 
-                
+                };
+
+
+
 const httpLink = 'http://127.0.0.1:1337/api/production-eau-chaudes?populate=*';
 
 const headerss = {
@@ -60,18 +60,18 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
-  
+
 } catch (error) {
     console.error(error);
 }
-   
+
 
 
             }
-            
+
             const handleToggle = () => {
                 setIsChecked(!isChecked);
 
@@ -81,7 +81,7 @@ const headerss = {
     return (
         <div>
          <form onSubmit={handleSubmit}>
-         
+
        <p> Litrage :  <input required onChange={e=>setLitrage(e.target.value)} value={litrage} type="number" /> </p>
        <p> Quantite :  <input required onChange={e=>setQuantite(e.target.value)} value={quantite} type="number" /> </p>
                        <p>
@@ -97,7 +97,7 @@ const headerss = {
                    <option value="Accumulation">
                      Accumulation
                      </option>
-                    
+
                     <option value="instant">
                     instant
                     </option>
@@ -119,7 +119,7 @@ const headerss = {
                    <option value="régulation">
                     régulation
                      </option>
-                    
+
                     <option value="Jour/Nuit">
                     Jour/Nuit
                     </option>
@@ -127,7 +127,7 @@ const headerss = {
                     </select>
 
                     </p>
-       
+
 
                     <p>
                      Sélectionnez le type   :{" "}
@@ -142,16 +142,16 @@ const headerss = {
                    <option value="GAZ">
                      GAZ
                      </option>
-                    
+
                     <option value="Electrique">
-                    Electrique  
+                    Electrique
                     </option>
 
                     </select>
 
                     </p>
 
-                    
+
 
 
                     <div className="dd">
@@ -169,7 +169,7 @@ options={[
 onChange={(selectedOptions) => {
 const selectedValues = selectedOptions.map((option) => option.value);
 setUtilisationEauChaude(selectedValues); // Utilisez setSelectedType1 au lieu de setTypeChauffage
-                    }}                     
+                    }}
 
 value={utilisationEauChaude.map((value) => ({ value, label: value }))}
 
@@ -218,7 +218,7 @@ value={utilisationEauChaude.map((value) => ({ value, label: value }))}
           checked={isChecked}
           onChange={handleToggle}
         />
-        
+
       {isChecked && ( // Condition pour afficher le paragraphe uniquement si isChecked est vrai
         <p>
        Description du systeme de limitation :{' '}
@@ -234,7 +234,7 @@ value={utilisationEauChaude.map((value) => ({ value, label: value }))}
 
 
       <p> Remarque :  <textarea  onChange={e=>setRemarque(e.target.value)} value={remarque}  />  </p>
-         
+
        <p> <button type="submit" >Confirmer</button></p>
          </form>
         </div>

@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useState } from "react";
 import Select from 'react-select';
-import "@/app/globals.css"
+import "src/app/globals.css"
 
 export default function Home () {
     const daysOfWeek = [
@@ -24,57 +24,57 @@ export default function Home () {
     const [ouverturCollaborateur2 , setOuvertureCollaborateur2] = useState<string >("")
     const [fermetureCollaborateur1 , setFermetureCollaborateur1] = useState<string >("")
     const [fermetureCollaborateur2 , setFermetureCollaborateur2] = useState<string >("")
-     
+
     const [ouverturclient1 , setOuvertureClient1] = useState<string >("")
     const [fermetureclient1 , setFermetureClient1] = useState<string >("")
     const [ouverturclient2 , setOuvertureClient2] = useState<string >("")
     const [fermetureclient2 , setFermetureClient2] = useState<string >("")
-    
+
     const jour =JSON.stringify(selectedDays);
- 
+
     const router=useRouter();
 
                 const handleSubmit =async (event:any)=> {
                 event.preventDefault();
-            
+
                 const formattedTimeStringOuverturCollaborateur1 = formatTimeToHHMMSS(ouverturCollaborateur1);
                 const formattedTimeStringOuverturCollaborateur2 = formatTimeToHHMMSS(ouverturCollaborateur2);
                 const formattedTimeStringFermetureCollaborateur1 = formatTimeToHHMMSS(fermetureCollaborateur1);
                 const formattedTimeStringFermetureCollaborateur2 = formatTimeToHHMMSS(fermetureCollaborateur2);
-                
+
                 const formattedTimeStringOuvertureClient1=formatTimeToHHMMSS(ouverturclient1);
                 const formattedTimeStringFermetureClient1 = formatTimeToHHMMSS(fermetureclient1);
                 const formattedTimeStringOuvertureClient2 = formatTimeToHHMMSS(ouverturclient2);
                 const formattedTimeStringFermetureClient2 = formatTimeToHHMMSS(fermetureclient2);
-                
-                
 
-                 //  Amplitude Collaborateur Total // 
+
+
+                 //  Amplitude Collaborateur Total //
                  const amplitudeCollaborateur1Data:any = calculateAmplitude(ouverturCollaborateur1, fermetureCollaborateur1);
                  let   amplitudeCollaborateur2Data:any = amplitudeCollaborateur2();
                  const totalAmplitudeCollaborateurs = amplitudeCollaborateur1Data + amplitudeCollaborateur2Data;
                  const totalHoursCollaborateurs = Math.floor(totalAmplitudeCollaborateurs / 60);
                  const remainingMinutesCollaborateurs = totalAmplitudeCollaborateurs % 60;
-            
-                 const formattedTotalTimeCollaborateurs = `${totalHoursCollaborateurs.toString().padStart(2, '0')}:${remainingMinutesCollaborateurs.toString().padStart(2, '0')}`;
-             
-                 const formattedTimeStringAmplitudeTotaleCollaborateur =formatTimeToHHMMSS(formattedTotalTimeCollaborateurs);
-                    
 
-                 const amplitudeClient1 = calculateAmplitude(ouverturclient1, fermetureclient1);                 
+                 const formattedTotalTimeCollaborateurs = `${totalHoursCollaborateurs.toString().padStart(2, '0')}:${remainingMinutesCollaborateurs.toString().padStart(2, '0')}`;
+
+                 const formattedTimeStringAmplitudeTotaleCollaborateur =formatTimeToHHMMSS(formattedTotalTimeCollaborateurs);
+
+
+                 const amplitudeClient1 = calculateAmplitude(ouverturclient1, fermetureclient1);
                  let   amplitudeClient2Data:any = amplitudeClient2();
                  const totalAmplitudeClients = amplitudeClient1 + amplitudeClient2Data;
                  const totalHoursClients = Math.floor(totalAmplitudeClients / 60);
                  const remainingMinutesClients = totalAmplitudeClients % 60;
                  const totalAmplitudeFormatted = `${totalHoursClients.toString().padStart(2, '0')}:${remainingMinutesClients.toString().padStart(2, '0')}`;
-                 
+
 
                  const formattedTimeStringAmplitudeTotaleClient = formatTimeToHHMMSS(totalAmplitudeFormatted)
 
 
 
                 const cookies = parseCookies();
-                
+
                 const etatDesLieuData = {
                     Id_Audit:cookies.id,
                     Remarque:remarque,
@@ -91,8 +91,8 @@ export default function Home () {
                     Jour:jour
 
                 };
-                 
-                
+
+
 const httpLink = 'http://127.0.0.1:1337/api/etat-de-lieus?populate=*';
 
 const headerss = {
@@ -110,20 +110,20 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
 const responseData = await response.json();
 
 console.log(responseData)
 router.push("/Formulaire/ChoixForm")
-  
+
 } catch (error) {
     console.error(error);
 }
-   
+
 
 
             }
-          
+
 
             const convertTimeStringToTime = (timeString: string) => {
                 const [hours, minutes] = timeString.split(":").map(Number);
@@ -133,19 +133,19 @@ router.push("/Formulaire/ChoixForm")
                 return time;
               };
 
-              
+
 
 
               function convertTimeStringToMinutes(timeString:string) {
                 if (!timeString) {
                     return 0;
                 }
-                
+
                 const [hours, minutes] = timeString.split(":").map(part => parseInt(part));
                 return hours * 60 + minutes;
             }
-            
-            
+
+
 
 
             function calculateAmplitude(openingTime:string, closingTime:string) {
@@ -162,25 +162,25 @@ router.push("/Formulaire/ChoixForm")
                 }
               return (amplitudeCollaborateur2)
             }
-      
+
             function amplitudeClient2 ():any {
                 let amplitudeClient2 = 0;
                 if (ouverturclient2 !== null && fermetureclient2 !== null) {
                     amplitudeClient2 = calculateAmplitude(ouverturclient2, fermetureclient2);
                 }
-                
+
               return (amplitudeClient2)
             }
 
 
-           
+
             // Calculer l'amplitude totale pour les clients
-           
+
             function formatTimeToHHMMSS(timeString:any) {
                 if (!timeString) {
                   return null; // Ou une valeur par défaut appropriée si nécessaire
                 }
-              
+
                 const formattedTime = convertTimeStringToTime(timeString);
                 return formattedTime.toISOString().substr(11, 8);
               }
@@ -201,7 +201,7 @@ router.push("/Formulaire/ChoixForm")
        </div>
 
 
-     <p>   
+     <p>
 <label htmlFor="appt">Ouverture Collaborateur 1 : </label>
 <input type="time" id="appt" name="appt"  required  onChange={e=> setOuvertureCollaborateur1(e.target.value)} value={ouverturCollaborateur1} />
 </p>
@@ -220,23 +220,23 @@ router.push("/Formulaire/ChoixForm")
 </p>
 
 
-<p>   
+<p>
 <label htmlFor="appt">Ouverture Client 1 : </label>
 <input type="time" id="appt" name="appt"  required onChange={e=> setOuvertureClient1(e.target.value)} value={ouverturclient1} />
 </p>
 
-<p>   
+<p>
 <label htmlFor="appt">Fermeture Client 1 : </label>
 <input type="time" id="appt" name="appt"  required onChange={e=> setFermetureClient1(e.target.value)} value={fermetureclient1} />
 </p>
 
-<p>   
+<p>
 <label htmlFor="appt">Ouverture Client 2 : </label>
 <input type="time" id="appt" name="appt"   onChange={e=> setOuvertureClient2(e.target.value)} value={ouverturclient2} />
 </p>
 
 
-<p>   
+<p>
 <label htmlFor="appt">Fermeture Client 2 : </label>
 <input type="time" id="appt" name="appt"   onChange={e=> setFermetureClient2(e.target.value)} value={fermetureclient2} />
 </p>
@@ -246,7 +246,7 @@ router.push("/Formulaire/ChoixForm")
 <p> Remarque : <textarea required onChange={e => setRemarque(e.target.value)} value={remarque} /> </p>
 
 
-    
+
        <p> <button type="submit" >Confirmer</button></p>
          </form>
         </div>

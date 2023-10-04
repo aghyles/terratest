@@ -4,11 +4,12 @@ import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useState } from "react";
 import Select , {  MultiValue } from 'react-select';
-import "@/app/globals.css"
-export default function Home () {
- 
+import "src/app/globals.css";
 
-  const [descriptionPb, setDescriptionPb] = useState<string | undefined>(""); 
+export default function Home () {
+
+
+  const [descriptionPb, setDescriptionPb] = useState<string | undefined>("");
   const [isChecked, setIsChecked] = useState(false);
   const [typeChauffage, setTypeChauffage] = useState<string | undefined >("");
   const [temperateurChaude, setTemperateurChaude] = useState<string | number |undefined >("");
@@ -36,10 +37,10 @@ export default function Home () {
                     Type_regulation_2:selectedType2,
                     Remarque:remarque,
                     Id_Audit:id
-                                    
+
                 };
-                 
-                
+
+
 const httpLink = 'http://127.0.0.1:1337/api/pilotage-de-batiments?populate=*';
 
 const headerss = {
@@ -57,14 +58,14 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
-  console.log(responseData); 
+  console.log(responseData);
 } catch (error) {
     console.error(error);
 }
-   
+
 
 
             }
@@ -78,7 +79,7 @@ console.log(selectedType1)
 
         <div>
          <form onSubmit={handleSubmit}>
-         
+
          <label htmlFor="toggle">
        Systeme de piloage :
         <input
@@ -113,18 +114,18 @@ console.log(selectedType1)
                      GAZ
                      </option>
                     <option value="Pac air / air ">
-                      Pac air / air 
+                      Pac air / air
                     </option>
                     <option value=" Pac air / eau ">
-                    Pac air / eau 
+                    Pac air / eau
                     </option>
                     <option value="Electrique">
-                    Electrique  
+                    Electrique
                     </option>
                     <option value="Fioul">
                     Fioul
                     </option>
-                    
+
                     </select>
 
                     </p>
@@ -137,8 +138,8 @@ console.log(selectedType1)
 
                 <p> Temperateur chaude  :  <input required onChange={e=>setTemperateurChaude(e.target.value)} value={temperateurChaude} type="number" /> </p>
                 <p> Temperateur froide  :  <input required onChange={e=>setTemperateurFroide(e.target.value)} value={temperateurFroide} type="number" /> </p>
-                
-    
+
+
              <div className="dd">
 
              Sélectionnez le type de régulation 1 :
@@ -155,15 +156,15 @@ console.log(selectedType1)
             onChange={(selectedOptions) => {
             const selectedValues = selectedOptions.map((option) => option.value);
             setSelectedType1(selectedValues); // Utilisez setSelectedType1 au lieu de setTypeChauffage
-                                 }}                     
-            
+                                 }}
+
             value={selectedType1.map((value) => ({ value, label: value }))}
 
              />
 
             </div>
 
-               
+
              <div className="dd">
 
              Sélectionnez le type de régulation 2 :
@@ -180,20 +181,20 @@ console.log(selectedType1)
             onChange={(selectedOptions) => {
             const selectedValues = selectedOptions.map((option) => option.value);
             setSelectedType2(selectedValues); // Utilisez setSelectedType1 au lieu de setTypeChauffage
-                                 }}                     
-            
+                                 }}
+
             value={selectedType2.map((value) => ({ value, label: value }))}
 
              />
 
             </div>
-                
+
 
                 <p> Remarque :  <textarea  onChange={e=>setRemarque(e.target.value)} value={remarque}  />  </p>
-               
 
 
-       <p> 
+
+       <p>
         <button type="submit" >Confirmer</button></p>
          </form>
         </div>
