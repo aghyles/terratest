@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import { useState , useEffect } from "react";
-import fetchAudit from "@/app/Components/fetcher";
+import fetchAudit from "src/app/(DashboardLayout)/audition/Components/fetcher";
 
 export default function Home () {
 
@@ -16,11 +16,11 @@ export default function Home () {
   const [prixAcheminement, setPrixAcheminement] = useState< number >(0);
   const [taxes, setTaxes] = useState< number >(0);
   const [abonnement, setAbonnement] = useState< number >(0);
-  
+
 
   const [hpHcList, setHpHcList] = useState<string []>([]);
   const cookies = parseCookies();
-  
+
 
   const router=useRouter();
 
@@ -31,8 +31,8 @@ export default function Home () {
                 var total:number=0;
 
                 hpHcList.forEach((item:any) => {
-                  if (item.id == cookies.id) { 
-                    // La base // 
+                  if (item.id == cookies.id) {
+                    // La base //
                     item.attributes.remplissage_hp_hcs.data.forEach((remplissage : any) => {
                       console.log(remplissage.attributes.Total_HP_HC )
                       hpPourcent = hpPourcent + remplissage.attributes.Pourcent_HP;
@@ -40,15 +40,15 @@ export default function Home () {
                       total=item.attributes.remplissage_hp_hcs.data.length;
 
                     });
-  
+
                   }
-                  
+
                 });
-              
+
 
                 hpPourcent=hpPourcent/total;
                 hcPourcent=hcPourcent/total
-                
+
                  const totalFixe=(((hpPourcent/100)*prixhphKwh*qteKwh)+((hcPourcent/100)*qteKwh*prixhchKwh)+(prixAcheminement * qteKwh ) + ( taxes * qteKwh ) + abonnement).toFixed(2);
                  const energieData = {
                     audit:cookies.id,
@@ -65,8 +65,8 @@ export default function Home () {
                     Totale:totalFixe,
                     Mois:mois
                 };
-          
-                
+
+
 
 const httpLink = 'http://127.0.0.1:1337/api/energies?populate=*';
 
@@ -85,18 +85,18 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
-  console.log(responseData); 
- 
- 
+  console.log(responseData);
+
+
 
 
 } catch (error) {
     console.error(error);
 }
-   
+
             }
               useEffect(() => {
                 const data= async () => {
@@ -104,14 +104,14 @@ const headerss = {
                    setHpHcList(audit.data );
                    }
                   data();
-               
+
                },[])
 
    console.log(hpHcList)
     return (
         <div>
          <form onSubmit={handleSubmit}>
-       
+
 
          <p>
   Sélectionnez le mois :{" "}
@@ -148,8 +148,8 @@ const headerss = {
          <p> Prix acheminement  : <input required onChange={e => setPrixAcheminement(parseFloat(e.target.value))} value={prixAcheminement} type="number" /> </p>
          <p> taxes  : <input required onChange={e => setTaxes(parseFloat(e.target.value))} value={taxes} type="number" /> </p>
          <p> Abonnement  : <input required onChange={e => setAbonnement(parseFloat(e.target.value))} value={abonnement} type="number" /> </p>
-          
-       
+
+
        <p> <button type="submit" >Confirmer</button></p>
          </form>
         </div>

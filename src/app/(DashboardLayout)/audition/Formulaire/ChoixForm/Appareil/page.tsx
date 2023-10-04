@@ -1,13 +1,13 @@
 'use client';
 
-import fetchAudit from "@/app/Components/fetcher";
+import fetchAudit from "src/app/(DashboardLayout)/audition/Components/fetcher";
 import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useEffect, useState } from "react";
 
 
 export default function Home () {
- 
+
     const [routineList, setRoutineList] = useState<string[]>([]);
     const [selectedRoutine, setSelectedRoutine] = useState<string  >('');
 
@@ -19,11 +19,11 @@ export default function Home () {
     const [apreService , setApreService] = useState<undefined | string>(' Rien à signaler')
     const [off , setOff] = useState<undefined |  string>(' Rien à signaler')
     const [ regulation , setRegulation] = useState<undefined | string>('')
-    
+
     const [isChecked, setIsChecked] = useState(false);
     const [cookies , setcookie] = useState<any> ((parseCookies()));
-    
-    
+
+
     const router=useRouter();
 
                 const handleSubmit =async (event:any)=> {
@@ -41,8 +41,8 @@ export default function Home () {
                    Apre_Service:apreService,
                    Off:off
                 };
-                 
-                
+
+
 const httpLink = 'http://127.0.0.1:1337/api/appareils?populate=*';
 
 const headerss = {
@@ -60,14 +60,14 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
 
 } catch (error) {
     console.error(error);
 }
-   
+
 
 
             }
@@ -86,10 +86,10 @@ const headerss = {
                 const data= async () => {
                    const audit =await fetchAudit('http://127.0.0.1:1337/api/routine-de-travails?populate=*')
                    setRoutineList(audit.data);
-                
+
                    }
                   data();
-                  
+
                },[])
 
 
@@ -130,7 +130,7 @@ const headerss = {
           checked={isChecked}
           onChange={handleToggle}
         />
-        
+
       {isChecked && ( // Condition pour afficher le paragraphe uniquement si isChecked est vrai
         <p>
           Type de régulation :{' '}

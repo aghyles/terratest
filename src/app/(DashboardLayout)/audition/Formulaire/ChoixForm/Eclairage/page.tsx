@@ -5,8 +5,8 @@ import { parseCookies } from "nookies";
 import {  useState } from "react";
 
 export default function Home () {
- 
-   
+
+
   const [eclairge, setEclairge] = useState<undefined | string >('');
   const router=useRouter();
 
@@ -17,10 +17,10 @@ export default function Home () {
                 const eclairageData = {
                     Nom:eclairge,
                    audit:id
-                                    
+
                 };
-                 
-                
+
+
 const httpLink = 'http://127.0.0.1:1337/api/eclairages?populate=*';
 
 const headerss = {
@@ -38,14 +38,14 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
-  console.log(responseData); 
+  console.log(responseData);
 } catch (error) {
     console.error(error);
 }
-   
+
 
 
             }
@@ -53,7 +53,7 @@ console.log(eclairge)
     return (
         <div>
          <form onSubmit={handleSubmit}>
-         
+
          <p>
                      Sélectionnez l'eclairage  :{" "}
                     <select
@@ -71,13 +71,13 @@ console.log(eclairge)
                     Cuisine
                     </option>
                     <option value="Back  Office ">
-                    Back  Office 
+                    Back  Office
                     </option>
                     <option value="Sanitaires">
-                    Sanitaires  
+                    Sanitaires
                     </option>
-                    
-                    
+
+
                     </select>
 
                     </p>

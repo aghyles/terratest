@@ -1,6 +1,6 @@
 'use client';
 
-import fetchAudit from "@/app/Components/fetcher";
+import fetchAudit from "src/app/(DashboardLayout)/audition/Components/fetcher";
 import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useEffect, useState } from "react";
@@ -8,8 +8,8 @@ import Select , {  MultiValue } from 'react-select';
 import "@/app/globals.css"
 
 export default function Home () {
- 
-   
+
+
   const [circuit, setCircuit] = useState<MultiValue<any> >([]);
   const [nombreLuminieux, setNombreLuminieux] = useState<undefined | string  | number>('');
   const [remarque, setRemarque] = useState<undefined | string >('');
@@ -31,10 +31,10 @@ export default function Home () {
                    id_eclairage:selectedeclairage,
                    Nombre_luminieux:nombreLuminieux,
                    Remarque:remarque
-                                    
+
                 };
-          
-                
+
+
 const httpLink = 'http://127.0.0.1:1337/api/Circuits?populate=*';
 
 const headerss = {
@@ -52,14 +52,14 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
-  console.log(responseData); 
+  console.log(responseData);
 } catch (error) {
     console.error(error);
 }
-   
+
 
 
             }
@@ -116,7 +116,7 @@ options={[
 onChange={(selectedOptions) => {
 const selectedValues = selectedOptions.map((option) => option.value);
 setCircuit(selectedValues); // Utilisez setSelectedType1 au lieu de setTypeChauffage
-}}                     
+}}
 
 value={circuit.map((value) => ({ value, label: value }))}
 
@@ -143,7 +143,7 @@ value={circuit.map((value) => ({ value, label: value }))}
 
        <p> Nombre Luminieux : <input type="number" onChange={e=>setNombreLuminieux(e.target.value)} value={nombreLuminieux}  />  </p>
        <p> Remarque :  <textarea required onChange={e=>setRemarque(e.target.value)} value={remarque}  /> </p>
-       
+
        <p> <button type="submit" >Confirmer</button></p>
          </form>
         </div>
