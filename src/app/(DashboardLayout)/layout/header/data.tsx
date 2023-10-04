@@ -1,21 +1,21 @@
 
-import img1 from 'src/assets/images/profile/user-1.jpg';
-import img2 from 'src/assets/images/profile/user-2.jpg';
-import img3 from 'src/assets/images/profile/user-3.jpg';
-import img4 from 'src/assets/images/profile/user-4.jpg';
+const img1 = '/images/profile/user-1.jpg';
+const img2 = '/images/profile/user-2.jpg';
+const img3 = '/images/profile/user-3.jpg';
+const img4 = '/images/profile/user-4.jpg';
 
-import icon1 from 'src/assets/images/svgs/icon-account.svg'
-import icon2 from 'src/assets/images/svgs/icon-inbox.svg'
-import icon3 from 'src/assets/images/svgs/icon-tasks.svg'
+const icon1 = '/images/svgs/icon-account.svg';
+const icon2 = '/images/svgs/icon-inbox.svg';
+const icon3 = '/images/svgs/icon-tasks.svg';
 
-import ddIcon1 from 'src/assets/images/svgs/icon-dd-chat.svg'
-import ddIcon2 from 'src/assets/images/svgs/icon-dd-cart.svg'
-import ddIcon3 from 'src/assets/images/svgs/icon-dd-invoice.svg'
-import ddIcon4 from 'src/assets/images/svgs/icon-dd-date.svg'
-import ddIcon5 from 'src/assets/images/svgs/icon-dd-mobile.svg'
-import ddIcon6 from 'src/assets/images/svgs/icon-dd-lifebuoy.svg'
-import ddIcon7 from 'src/assets/images/svgs/icon-dd-message-box.svg'
-import ddIcon8 from 'src/assets/images/svgs/icon-dd-application.svg'
+const ddIcon1 = '/images/svgs/icon-dd-chat.svg';
+const ddIcon2 = '/images/svgs/icon-dd-cart.svg';
+const ddIcon3 = '/images/svgs/icon-dd-invoice.svg';
+const ddIcon4 = '/images/svgs/icon-dd-date.svg';
+const ddIcon5 = '/images/svgs/icon-dd-mobile.svg';
+const ddIcon6 = '/images/svgs/icon-dd-lifebuoy.svg';
+const ddIcon7 = '/images/svgs/icon-dd-message-box.svg';
+const ddIcon8 = '/images/svgs/icon-dd-application.svg';
 
 //
 // Notifications dropdown
