@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import { useState , useEffect } from "react";
-import fetchAudit from "@/app/Components/fetcher";
+import fetchAudit from "src/app/(DashboardLayout)/audition/Components/fetcher";
 
 export default function Home () {
 
@@ -13,9 +13,9 @@ export default function Home () {
   const [heuresUtilisationPotentielle, setHeuresUtilisationPotentielle] = useState< number  >(0);
   const [ heureutilisationPotentielleDimanche , setHeureutilisationPotentielleDimanche] = useState< number  >(0);
   const [ heureConsoDimanche, setHeureConsoDimanche] = useState< number  >(0);
-  
+
   const cookies = parseCookies();
-  
+
 
   const router=useRouter();
 
@@ -24,7 +24,7 @@ export default function Home () {
 
                 const relevetselected =await fetchAudit(`http://127.0.0.1:1337/api/releve-consommations/${selectedrelevet}?populate=*`)
                 const relevetData=relevetselected.data
-                
+
 
 
                  const tableauData = {
@@ -39,10 +39,10 @@ export default function Home () {
                     kwh_economisable_par_semaine:((((heureConsoOuverture*6)+heureConsoDimanche)*relevetData.attributes.Puissance)-((heuresUtilisationPotentielle*6)+heureutilisationPotentielleDimanche)*relevetData.attributes.Puissance).toFixed(2),
                     heure_utilisation_potentielle_dimanche:heureutilisationPotentielleDimanche,
                     conso_estime_semaine_kwh:(((heuresUtilisationPotentielle*6)+heureutilisationPotentielleDimanche)*relevetData.attributes.Puissance).toFixed(2),
-                    
+
                 };
-          
-                
+
+
 
 const httpLink = 'http://127.0.0.1:1337/api/tableau-analyses?populate=*';
 
@@ -61,16 +61,16 @@ const headerss = {
       headers: headerss,
       body: body,
   });
-  
+
   const responseData = await response.json();
   router.push("/Formulaire/ChoixForm")
- 
- 
+
+
 
 } catch (error) {
     console.error(error);
 }
-   
+
             }
               useEffect(() => {
                 const data= async () => {
@@ -78,14 +78,14 @@ const headerss = {
                    setRelevet(relevetData.data );
                    }
                   data();
-               
+
                },[])
 
 
     return (
         <div>
          <form onSubmit={handleSubmit}>
-       
+
          <p>
           Sélectionnez le relevet de consommation adéquat  :{" "}
           <select
@@ -108,10 +108,10 @@ const headerss = {
          <p> heure conso dimanche : <input required onChange={e => setHeureConsoDimanche(parseFloat(e.target.value))} value={heureConsoDimanche} type="number" /> </p>
          <p> Heures d’utilisation potentielle jour d’ouverture  : <input required onChange={e => setHeuresUtilisationPotentielle(parseFloat(e.target.value))} value={heuresUtilisationPotentielle} type="number" /> </p>
          <p> heure_utilisation_potentielle_dimanche : <input required onChange={e => setHeureutilisationPotentielleDimanche (parseFloat(e.target.value))} value={ heureutilisationPotentielleDimanche } type="number" /> </p>
-         
-  
-  
-       
+
+
+
+
        <p> <button type="submit" >Confirmer</button></p>
          </form>
         </div>

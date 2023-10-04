@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useEffect, useState } from "react";
 import Select , {  MultiValue } from 'react-select';
-import "@/app/globals.css"
+
 
 export default function Home () {
 
@@ -73,6 +73,8 @@ const headerss = {
                },[])
 
 console.log(selectedeclairage)
+
+
     return (
         <div>
          <form onSubmit={handleSubmit}>
