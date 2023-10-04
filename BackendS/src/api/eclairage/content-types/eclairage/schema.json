@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "eclairages",
+  "info": {
+    "singularName": "eclairage",
+    "pluralName": "eclairages",
+    "displayName": "Eclairage",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "audit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::audit.audit",
+      "inversedBy": "eclairages"
+    },
+    "Nom": {
+      "type": "string",
+      "required": false
+    },
+    "circuits": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::circuit.circuit",
+      "mappedBy": "id_eclairage"
+    }
+  }
+}

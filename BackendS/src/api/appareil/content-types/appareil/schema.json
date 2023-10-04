@@ -1,0 +1,57 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appareils",
+  "info": {
+    "singularName": "appareil",
+    "pluralName": "appareils",
+    "displayName": "Appareil",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Id_routine_de_travail": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::routine-de-travail.routine-de-travail",
+      "inversedBy": "appareils"
+    },
+    "Nom_Appareil": {
+      "type": "string",
+      "required": false
+    },
+    "Nombre": {
+      "type": "integer",
+      "required": false
+    },
+    "Regulation": {
+      "type": "boolean",
+      "required": false
+    },
+    "Type_regulation": {
+      "type": "string"
+    },
+    "Mise_en_place": {
+      "type": "richtext",
+      "required": false
+    },
+    "Service": {
+      "type": "richtext",
+      "required": false
+    },
+    "Entre_Service": {
+      "type": "richtext",
+      "required": false
+    },
+    "Apre_Service": {
+      "type": "richtext",
+      "required": false
+    },
+    "Off": {
+      "type": "text",
+      "required": false
+    }
+  }
+}

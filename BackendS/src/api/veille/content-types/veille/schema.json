@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "veilles",
+  "info": {
+    "singularName": "veille",
+    "pluralName": "veilles",
+    "displayName": "Veille",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Id_audit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::audit.audit",
+      "inversedBy": "veille"
+    },
+    "Veille": {
+      "type": "richtext",
+      "required": false
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "remplissage_hp_hcs",
+  "info": {
+    "singularName": "remplissage-hp-hc",
+    "pluralName": "remplissage-hp-hcs",
+    "displayName": "Remplissage_HP_HC",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Id_audit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::audit.audit",
+      "inversedBy": "remplissage_hp_hcs"
+    },
+    "HP_kwh": {
+      "type": "decimal",
+      "required": false
+    },
+    "HC_kwh": {
+      "required": false,
+      "type": "decimal"
+    },
+    "Total_HP_HC": {
+      "type": "decimal",
+      "required": false
+    },
+    "Pourcent_HP": {
+      "type": "decimal",
+      "required": false
+    },
+    "Pourcent_HC": {
+      "required": false,
+      "type": "decimal"
+    }
+  }
+}

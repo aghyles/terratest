@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "releve_consommations",
+  "info": {
+    "singularName": "releve-consommation",
+    "pluralName": "releve-consommations",
+    "displayName": "Releve_Consommation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "audit": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::audit.audit",
+      "inversedBy": "releve_consommations"
+    },
+    "Nom_Dijoncteur": {
+      "type": "string",
+      "required": false
+    },
+    "Ampere": {
+      "type": "float",
+      "required": false
+    },
+    "Volt": {
+      "type": "float",
+      "required": false
+    },
+    "Circuit": {
+      "type": "text",
+      "required": false
+    },
+    "Photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "tableau_analyse": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tableau-analyse.tableau-analyse",
+      "mappedBy": "Id_releve_consommation"
+    },
+    "Puissance": {
+      "type": "decimal"
+    }
+  }
+}

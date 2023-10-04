@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "observations",
+  "info": {
+    "singularName": "observation",
+    "pluralName": "observations",
+    "displayName": "Observation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Id_audit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::audit.audit",
+      "inversedBy": "observation"
+    },
+    "Demande_Client": {
+      "type": "richtext",
+      "required": false
+    },
+    "Demande_Collaborateur": {
+      "type": "richtext",
+      "required": false
+    },
+    "Observation": {
+      "type": "richtext",
+      "required": false
+    },
+    "Photo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    }
+  }
+}
