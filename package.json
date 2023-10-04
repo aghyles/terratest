@@ -12,19 +12,6 @@
     "build:icons": "tsc -b src/iconify-bundle && node src/iconify-bundle/bundle-icons-react.js"
   },
   "dependencies": {
-
-
-
-    "@mui/icons-material": "latest",
-    "@tabler/icons-react": "^2.1.1",
-    "apexcharts": "3.36.3",
-    "eslint": "8.41.0",
-    "eslint-config-next": "13.4.3",
-    "lodash": "^4.17.21",
-    "react-helmet-async": "^1.3.0",
-
-
-
     "@casl/ability": "6.3.3",
     "@casl/react": "3.1.0",
     "@emotion/cache": "11.10.5",
@@ -41,15 +28,19 @@
     "@fullcalendar/timegrid": "6.1.4",
     "@hookform/resolvers": "2.9.11",
     "@iconify/react": "4.1.0",
+    "@mui/icons-material": "latest",
     "@mui/lab": "5.0.0-alpha.123",
     "@mui/material": "5.11.13",
     "@mui/system": "5.11.13",
     "@mui/x-data-grid": "6.0.1",
     "@popperjs/core": "2.11.6",
     "@reduxjs/toolkit": "1.9.3",
+    "@tabler/icons-react": "^2.1.1",
+    "@types/lodash": "^4.14.199",
     "@types/node": "20.4.10",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
+    "apexcharts": "3.36.3",
     "apexcharts-clevision": "3.28.5",
     "autoprefixer": "10.4.14",
     "axios": "1.3.4",
@@ -62,11 +53,14 @@
     "cookie": "^0.5.0",
     "date-fns": "2.29.3",
     "draft-js": "0.11.7",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.3",
     "i18next": "22.4.11",
     "i18next-browser-languagedetector": "7.0.1",
     "i18next-http-backend": "2.2.0",
     "jsonwebtoken": "8.5.1",
     "keen-slider": "6.8.5",
+    "lodash": "^4.17.21",
     "next": "13.4.13",
     "nookies": "^2.5.2",
     "nprogress": "0.2.0",
@@ -81,6 +75,7 @@
     "react-dom": "18.2.0",
     "react-draft-wysiwyg": "1.15.0",
     "react-dropzone": "14.2.3",
+    "react-helmet-async": "^1.3.0",
     "react-hook-form": "7.43.5",
     "react-hot-toast": "2.4.0",
     "react-i18next": "12.2.0",
