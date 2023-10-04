@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useState } from "react";
 import Select , {  MultiValue } from 'react-select';
-import "src/app/globals.css";
+
 
 export default function Home () {
 
@@ -75,6 +75,7 @@ const headerss = {
 
               };
 console.log(selectedType1)
+
     return (
 
         <div>

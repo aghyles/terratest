@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { parseCookies } from "nookies";
 import {  useState } from "react";
 import Select from 'react-select';
-import "src/app/globals.css"
+
 
 export default function Home () {
     const daysOfWeek = [
