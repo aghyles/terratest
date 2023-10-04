@@ -17,7 +17,7 @@ import ApexChartWrapper from 'src/@core/styles/libs/react-apexcharts'
 import AnalyticsSessions from 'src/views/dashboards/analytics/AnalyticsSessions'
 
 // AnalyticsOverviews a posé probléme dans l'integration du théme
-import AnalyticsOverview from 'src/views/dashboards/analytics/AnalyticsOverview'
+
 import AnalyticsPerformance from 'src/views/dashboards/analytics/AnalyticsPerformance'
 import AnalyticsWeeklySales from 'src/views/dashboards/analytics/AnalyticsWeeklySales'
 import AnalyticsVisitsByDay from 'src/views/dashboards/analytics/AnalyticsVisitsByDay'
