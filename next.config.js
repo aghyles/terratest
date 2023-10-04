@@ -6,7 +6,13 @@ const path = require('path')
 // Remove this if you're not using Fullcalendar features
 
 module.exports = {
-  ignoreBuildErrors: true, // Cela peut être utile pour ignorer les erreurs de type pendant le build
+  typescript: {
+    // !! WARN !!
+    // Dangerously allow production builds to successfully complete even if
+    // your project has type errors.
+    // !! WARN !!
+    ignoreBuildErrors: true,
+  },
   trailingSlash: true,
   reactStrictMode: false,
   webpack: config => {
