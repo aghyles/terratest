@@ -5,7 +5,7 @@ import "@/app/globals.css";
 import { parseCookies } from "nookies";
 import { useRouter } from "next/navigation";
 import Select, {  MultiValue } from 'react-select';
-import fetchAudit from "app/(DashboardLayout)/audition/Components/fetcher";
+import fetchAudit from "src/app/(DashboardLayout)/audition/Components/fetcher";
 
 export default function Creer() {
 
@@ -18,19 +18,19 @@ export default function Creer() {
     const router=useRouter();
     const handleSubmit = async (event:any) => {
         event.preventDefault();
-        var ampereTypologie=0;
-        var voltTypologie=0;
-        var puissanceTypologie=0;
-        var heureConsoouvertureTypologie=0;
-        var consoJourKwhTypologie =0
-        var heureConsoDimancheTypologie =0
-        var consoDimancheKwhTypologie =0
-        var consoSemaineKwhTypologie =0
-        var heuresUtilisationPotentielleJourOuvertureTypologie=0
-        var heureEconomisableTypologie = 0
-        var kwhEconomisableParSemaineTypologie=0
-        var heureUtilisationPotentielleDimancheTypologie =0
-        var consoEstimeSemaineKwhTypologie=0
+        let ampereTypologie=0;
+        let voltTypologie=0;
+        let puissanceTypologie=0;
+        let heureConsoouvertureTypologie=0;
+        let consoJourKwhTypologie =0
+        let heureConsoDimancheTypologie =0
+        let consoDimancheKwhTypologie =0
+        let consoSemaineKwhTypologie =0
+        let heuresUtilisationPotentielleJourOuvertureTypologie=0
+        let heureEconomisableTypologie = 0
+        let kwhEconomisableParSemaineTypologie=0
+        let heureUtilisationPotentielleDimancheTypologie =0
+        let consoEstimeSemaineKwhTypologie=0
 
 
         for (let index = 0; index < selectedrelevet.length; index++) {
