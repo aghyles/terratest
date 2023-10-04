@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Component Import
-import Error500 from 'src/pages/500'
+import Error500 from 'src/2pages/500'
 
 const Error = () => <Error500 />
 

@@ -5,7 +5,7 @@ import { ReactNode } from 'react'
 import BlankLayout from 'src/@core/layouts/BlankLayout'
 
 // ** Component Import
-import Error401 from 'src/pages/401'
+import Error401 from 'src/2pages/401'
 
 const Error = () => <Error401 />
 
