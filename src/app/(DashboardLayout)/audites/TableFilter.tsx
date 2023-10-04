@@ -145,39 +145,13 @@ const columns: GridColDef[] = [
 ]
 
 const TableColumns = () => {
-  const [fetchedData, setFetchedData] = useState<DataGridRowType[]>([]);
-  const [setLoading] = useState(true);
+  const [fetchedData] = useState<DataGridRowType[]>([]);
+
   const [searchText, setSearchText] = useState<string>('');
   const [filteredData, setFilteredData] = useState<DataGridRowType[]>([]);
   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://127.0.0.1:1337/api/audits?populate=*', {
-          headers: {
-            'Authorization': 'Bearer a6011fda65f26e8f21703ac8e644c820d4d45a0577d6fec8431d9c373657d05d6d86ac7cc1192623d42df59d08339dcc189284bd89940d4e4ab00b238dcc9983abb68bde7ce445a7b3bcf908ecaa72a5b54bace2c799e5c6154fbeadc40f522c089075adda8df0392173204062b19cc2d8794b1607d30310348e97691422bddb'
-          },
-        });
 
-        console.log('millieu'+fetchedData);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const result = await response.json();
-        setFetchedData(result);
-        console.log('Données récupérées :', result);
-
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   const handleSearch = (searchValue: string) => {
     setSearchText(searchValue)
