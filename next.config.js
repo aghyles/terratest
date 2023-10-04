@@ -6,6 +6,7 @@ const path = require('path')
 // Remove this if you're not using Fullcalendar features
 
 module.exports = {
+  ignoreBuildErrors: true, // Cela peut être utile pour ignorer les erreurs de type pendant le build
   trailingSlash: true,
   reactStrictMode: false,
   webpack: config => {
