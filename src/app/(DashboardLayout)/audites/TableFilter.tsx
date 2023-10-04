@@ -1,5 +1,5 @@
 // ** React Imports
-import { ChangeEvent, useState } from 'react'
+import { useState } from 'react'
 
 // ** MUI Imports
 import Box from '@mui/material/Box'
@@ -60,9 +60,7 @@ const statusObj: StatusObj = {
   5: { title: 'applied', color: 'info' }
 }
 
-const escapeRegExp = (value: string) => {
-  return value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&')
-}
+
 
 const columns: GridColDef[] = [
   {
@@ -147,26 +145,13 @@ const columns: GridColDef[] = [
 const TableColumns = () => {
   const [fetchedData] = useState<DataGridRowType[]>([]);
 
-  const [searchText, setSearchText] = useState<string>('');
-  const [filteredData, setFilteredData] = useState<DataGridRowType[]>([]);
+
+  const [filteredData] = useState<DataGridRowType[]>([]);
   const [paginationModel, setPaginationModel] = useState({ page: 0, pageSize: 7 })
 
 
 
-  const handleSearch = (searchValue: string) => {
-    setSearchText(searchValue)
-    const searchRegex = new RegExp(escapeRegExp(searchValue), 'i')
-    const filteredRows = fetchedData.filter(row => {
-      return Object.keys(row).some(field => {
-        return searchRegex.test(row[field].toString())
-      })
-    })
-    if (searchValue.length) {
-      setFilteredData(filteredRows)
-    } else {
-      setFilteredData([])
-    }
-  }
+
 
   return (
     <Card>
@@ -183,11 +168,7 @@ const TableColumns = () => {
           baseButton: {
             variant: 'outlined'
           },
-          toolbar: {
-            value: searchText,
-            clearSearch: () => handleSearch(''),
-            onChange: (event: ChangeEvent<HTMLInputElement>) => handleSearch(event.target.value)
-          }
+
         }}
       />
     </Card>
