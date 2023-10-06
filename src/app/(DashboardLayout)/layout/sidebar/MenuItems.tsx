@@ -49,13 +49,13 @@ const Menuitems = [
     id: uniqueId(),
     title: "Auditeurs",
     icon: IconUserCheck,
-    href: "/authentication/login",
+    href: "/sample-page",
   },
   {
     id: uniqueId(),
     title: "Clients",
     icon: IconUsers,
-    href: "/authentication/register",
+    href: "/sample-page",
   },
 
   {

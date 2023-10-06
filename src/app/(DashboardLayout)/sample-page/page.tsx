@@ -6,11 +6,11 @@ import DashboardCard from 'src/app/(DashboardLayout)/components/shared/Dashboard
 
 const SamplePage = () => {
   return (
-    <PageContainer title="Sample Page" description="this is Sample page">
-      <DashboardCard title="Sample Page">
-        <Typography>This is a sample page</Typography>
-      </DashboardCard>
-    </PageContainer>
+    <PageContainer title="En construction" description="Cette page est en cours de construction">
+    <DashboardCard title="En construction">
+      <Typography>Cette page est actuellement en construction. Nous construisons une autoroute vers l'espace pour les fourmis. Revenez bientôt !</Typography>
+    </DashboardCard>
+  </PageContainer>
   );
 };
 
